@@ -1,0 +1,28 @@
+# ===== Panadería San Carlos — archivos que NO se suben a GitHub =====
+
+# Compilados de Maven / NetBeans (se vuelven a generar con Clean and Build)
+target/
+bin/
+nbproject/private/
+*.war
+*.class
+
+# Driver de Oracle (Maven lo descarga solo, ver pom.xml)
+ojbdc11jar/
+
+# Configuración con contraseñas reales (se sube config.example.xml en su lugar)
+**/src/main/resources/config.xml
+
+# Archivos temporales de Office y Windows
+~$*
+Thumbs.db
+desktop.ini
+.DS_Store
+
+
+# Otros proyectos (tienen su propio repositorio)
+PanaderiaCloud/
+PanaderiaFirebase/
+
+# Material de estudio
+Estudio_*.zip

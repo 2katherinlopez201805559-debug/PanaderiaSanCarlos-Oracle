@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+  COPIA DE EJEMPLO de config.xml (sin contraseñas).
+  Para usar el proyecto: copie este archivo como "config.xml" en la misma carpeta
+  (src/main/resources) y escriba sus datos reales de Oracle y un secreto propio.
+  El config.xml real NO se sube a GitHub (está en .gitignore).
+-->
+<configuration>
+
+<sistema>
+	<nombre>BACKEND</nombre>
+</sistema>
+
+<db>
+	<host>LOCALHOST</host>
+	<port>1521</port>
+	<service>XE</service>
+	<user>SU_USUARIO_ORACLE</user>
+	<pass>SU_CONTRASENA_ORACLE</pass>
+	<schema>SU_ESQUEMA</schema>
+	<version>1.0.0.0</version>
+</db>
+
+<seguridad>
+	<secreto>ESCRIBA_AQUI_UN_SECRETO_LARGO_Y_PRIVADO</secreto>
+</seguridad>
+
+</configuration>

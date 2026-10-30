@@ -1,0 +1,804 @@
+{
+  "info": {
+    "name": "Panaderia San Carlos - API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Ejecutar en orden (Run collection). Base: {{baseUrl}}"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/BACKEND/webapi"
+    },
+    {
+      "key": "idPedido",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Consultas",
+      "item": [
+        {
+          "name": "Sucursales",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/Sucursales/ObtenerSucursales",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Sucursales",
+                "ObtenerSucursales"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Devuelve una lista\", function () { pm.expect(pm.response.json()).to.be.an(\"array\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Productos (panes)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/Productos/ObtenerProductos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Productos",
+                "ObtenerProductos"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Devuelve una lista\", function () { pm.expect(pm.response.json()).to.be.an(\"array\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Receta del Francés (id 3)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/Productos/3/ObtenerReceta",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Productos",
+                "3",
+                "ObtenerReceta"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Devuelve una lista\", function () { pm.expect(pm.response.json()).to.be.an(\"array\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Insumos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/Insumos/ObtenerInsumos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Insumos",
+                "ObtenerInsumos"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Devuelve una lista\", function () { pm.expect(pm.response.json()).to.be.an(\"array\"); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "2. Producción",
+      "item": [
+        {
+          "name": "Producir 50 Francés",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Productos/ProducirPan",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Productos",
+                "ProducirPan"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ID_PRODUCTO\": 3,\n  \"CANTIDAD\": 50\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Producir 30 Especial",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Productos/ProducirPan",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Productos",
+                "ProducirPan"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ID_PRODUCTO\": 2,\n  \"CANTIDAD\": 30\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Comprar 25 kg harina de fuerza",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Insumos/RegistrarCompra",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Insumos",
+                "RegistrarCompra"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ID_INSUMO\": 1,\n  \"CANTIDAD\": 25\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3. Pedidos",
+      "item": [
+        {
+          "name": "Registrar pedido CENTRAL",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Pedidos/RegistrarPedido",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Pedidos",
+                "RegistrarPedido"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ID_SUCURSAL\": 1,\n  \"DETALLE\": [\n    {\n      \"ID_PRODUCTO\": 3,\n      \"CANTIDAD\": 20\n    },\n    {\n      \"ID_PRODUCTO\": 2,\n      \"CANTIDAD\": 10\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () { pm.response.to.have.status(200); });",
+                  "var r = pm.response.json();",
+                  "pm.test(\"Pedido creado\", function () { pm.expect(r.result).to.eql(\"OK\"); });",
+                  "pm.collectionVariables.set(\"idPedido\", r.id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Listar pedidos pendientes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/Pedidos/ObtenerPedidos?estado=PENDIENTE",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Pedidos",
+                "ObtenerPedidos"
+              ],
+              "query": [
+                {
+                  "key": "estado",
+                  "value": "PENDIENTE"
+                }
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Devuelve una lista\", function () { pm.expect(pm.response.json()).to.be.an(\"array\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Detalle del pedido",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/Pedidos/{{idPedido}}/ObtenerDetalle",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Pedidos",
+                "{{idPedido}}",
+                "ObtenerDetalle"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Devuelve una lista\", function () { pm.expect(pm.response.json()).to.be.an(\"array\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Resumen de producción",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/Reportes/ResumenProduccion",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Reportes",
+                "ResumenProduccion"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Devuelve una lista\", function () { pm.expect(pm.response.json()).to.be.an(\"array\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Despachar pedido",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/Pedidos/{{idPedido}}/Despachar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Pedidos",
+                "{{idPedido}}",
+                "Despachar"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Entregar pedido",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/Pedidos/{{idPedido}}/Entregar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Pedidos",
+                "{{idPedido}}",
+                "Entregar"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Alertas de stock mínimo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/Reportes/ObtenerAlertas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Reportes",
+                "ObtenerAlertas"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.test(\"Devuelve una lista\", function () { pm.expect(pm.response.json()).to.be.an(\"array\"); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "4. Validaciones (deben FALLAR con 400)",
+      "item": [
+        {
+          "name": "Producir sin insumos suficientes",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Productos/ProducirPan",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Productos",
+                "ProducirPan"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ID_PRODUCTO\": 3,\n  \"CANTIDAD\": 999999\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Rechazado con 400 (regla de negocio)\", function () { pm.response.to.have.status(400); });",
+                  "pm.test(\"Trae mensaje de error\", function () { pm.expect(pm.response.json().msj).to.be.a(\"string\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Cantidad negativa",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Productos/ProducirPan",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Productos",
+                "ProducirPan"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ID_PRODUCTO\": 3,\n  \"CANTIDAD\": -5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Rechazado con 400 (regla de negocio)\", function () { pm.response.to.have.status(400); });",
+                  "pm.test(\"Trae mensaje de error\", function () { pm.expect(pm.response.json().msj).to.be.a(\"string\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Despachar otra vez el mismo pedido",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/Pedidos/{{idPedido}}/Despachar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Pedidos",
+                "{{idPedido}}",
+                "Despachar"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Rechazado con 400 (regla de negocio)\", function () { pm.response.to.have.status(400); });",
+                  "pm.test(\"Trae mensaje de error\", function () { pm.expect(pm.response.json().msj).to.be.a(\"string\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Pedido sin panes",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Pedidos/RegistrarPedido",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Pedidos",
+                "RegistrarPedido"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ID_SUCURSAL\": 1,\n  \"DETALLE\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Rechazado con 400 (regla de negocio)\", function () { pm.response.to.have.status(400); });",
+                  "pm.test(\"Trae mensaje de error\", function () { pm.expect(pm.response.json().msj).to.be.a(\"string\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Pedido con pan inexistente",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Pedidos/RegistrarPedido",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Pedidos",
+                "RegistrarPedido"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ID_SUCURSAL\": 1,\n  \"DETALLE\": [\n    {\n      \"ID_PRODUCTO\": 9999,\n      \"CANTIDAD\": 5\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Rechazado con 400 (regla de negocio)\", function () { pm.response.to.have.status(400); });",
+                  "pm.test(\"Trae mensaje de error\", function () { pm.expect(pm.response.json().msj).to.be.a(\"string\"); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Despachar Alemán sin producir",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Pedidos/RegistrarPedido",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Pedidos",
+                "RegistrarPedido"
+              ]
+            },
+            "description": "",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ID_SUCURSAL\": 2,\n  \"DETALLE\": [\n    {\n      \"ID_PRODUCTO\": 4,\n      \"CANTIDAD\": 10\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Responde 200\", function () { pm.response.to.have.status(200); });",
+                  "pm.collectionVariables.set(\"idPedidoAleman\", pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "  ...ahora despacharlo (debe fallar)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/Pedidos/{{idPedidoAleman}}/Despachar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Pedidos",
+                "{{idPedidoAleman}}",
+                "Despachar"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Rechazado con 400 (regla de negocio)\", function () { pm.response.to.have.status(400); });",
+                  "pm.test(\"Trae mensaje de error\", function () { pm.expect(pm.response.json().msj).to.be.a(\"string\"); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
