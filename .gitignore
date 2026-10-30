@@ -26,3 +26,7 @@ PanaderiaFirebase/
 
 # Material de estudio
 Estudio_*.zip
+
+
+# Archivos que guarda la app de Claude
+Claude outputs/
